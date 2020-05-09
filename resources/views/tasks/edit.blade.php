@@ -8,7 +8,7 @@
 
         @include('tasks.form', [
             'projects' => $projects,
-            'buttonText' => 'Update Task'
+            'buttonText' => 'Update'
         ])
     </form>
 @endsection

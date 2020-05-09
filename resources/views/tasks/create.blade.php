@@ -7,7 +7,7 @@
         @include('tasks.form', [
             'task' => new App\Task,
             'projects' => $projects,
-            'buttonText' => 'Create Task'
+            'buttonText' => 'Create'
         ])
     </form>
 @endsection

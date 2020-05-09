@@ -26,7 +26,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('tasks.create');
     }
 
     /**
@@ -37,7 +37,9 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $task = Task::create($this->validateRequest());
+
+        return redirect(route('tasks.index'));
     }
 
     /**
@@ -48,7 +50,7 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        //
+        return view('tasks.show', compact('task'));
     }
 
     /**
@@ -59,7 +61,7 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+        return view('tasks.edit', compact('task'));
     }
 
     /**
@@ -71,7 +73,9 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        $task->update($this->validateRequest());
+
+        return redirect(route('tasks.index'));
     }
 
     /**
@@ -82,6 +86,21 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $task->delete();
+
+        return redirect(route('tasks.index'));
+    }
+
+    /**
+     * Validate the request attribute
+     *
+     * @return array
+     */
+    protected function validateRequest()
+    {
+        return request()->validate([
+            'name' => 'required',
+            'project_id' => 'required'
+        ]);
     }
 }

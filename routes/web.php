@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::resource('tasks', 'TaskController');
+Route::get('/projects/{project}/tasks', 'ProjectTaskController@show')->name('projects.tasks.show');

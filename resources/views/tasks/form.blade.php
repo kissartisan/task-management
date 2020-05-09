@@ -1,7 +1,7 @@
 @csrf
 
 <div class="form-group">
-    <label for="project_id">Associated Project</label>
+    <label for="project_id">Project:</label>
     <select name="project_id"
         class="form-control @error('name') is-invalid @enderror"
         required>

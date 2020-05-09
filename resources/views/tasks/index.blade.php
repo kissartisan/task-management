@@ -20,16 +20,22 @@
                 <tr>
                     <th>{{ $task->getKey() }}</th>
                     <th>
-                       {{ $task->name }}
+
+                            {{ $task->name }}
+                        </a>
                     </th>
-                    <th scope="col">{{ $task->project->name }}</th>
+                    <th>
+                        <a href="{{ route('projects.tasks.show', $task->project->getKey()) }}">
+                            {{ $task->project->name }}
+                        </a>
+                    </th>
                     <th class="list__actions">
                         <a href="{{ route('tasks.show', $task) }}"
-                            class="btn btn-secondary list__actions-item">
+                            class="btn btn-info list__actions-item">
                             View
                         </a>
                         <a href="{{ route('tasks.edit', $task) }}"
-                            class="btn btn-info list__actions-item">
+                            class="btn btn-warning list__actions-item">
                             Edit
                         </a>
                         <form method="POST" action="{{ route('tasks.destroy', $task) }}"

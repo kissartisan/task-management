@@ -50,7 +50,9 @@ class TaskRequest extends FormRequest
      */
     public function getValidatorInstance()
     {
-        $this->generatePriority();
+        if($this->method() === 'POST') {
+            $this->generatePriority();
+        }
 
         return parent::getValidatorInstance();
     }

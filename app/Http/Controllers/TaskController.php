@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Task;
 use App\Project;
-use Illuminate\Http\Request;
+use App\Http\Requests\TaskRequest;
 
 class TaskController extends Controller
 {
@@ -15,7 +15,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::get();
+        $tasks = Task::with('project')->get();
 
         return view('tasks.index', compact('tasks'));
     }
@@ -27,7 +27,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        $projects = Project::lists('title', 'id');
+        $projects = Project::pluck('name', 'id');
 
         return view('tasks.create', compact('projects'));
     }
@@ -38,9 +38,9 @@ class TaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TaskRequest $request)
     {
-        $task = Task::create($this->validateRequest());
+        $task = Task::create($request->validated());
 
         return redirect(route('tasks.index'));
     }
@@ -74,9 +74,9 @@ class TaskController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Task $task)
+    public function update(TaskRequest $request, Task $task)
     {
-        $task->update($this->validateRequest());
+        $task->update($request->validated());
 
         return redirect(route('tasks.index'));
     }
@@ -94,16 +94,4 @@ class TaskController extends Controller
         return redirect(route('tasks.index'));
     }
 
-    /**
-     * Validate the request attribute
-     *
-     * @return array
-     */
-    protected function validateRequest()
-    {
-        return request()->validate([
-            'name' => 'required',
-            'project_id' => 'required'
-        ]);
-    }
 }

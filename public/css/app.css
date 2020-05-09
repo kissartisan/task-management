@@ -1,2 +1,14 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css);
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css);.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list__actions {
+  display: flex;
+}
+
+.list__actions-item {
+  margin: 0 0.1rem;
+}
 

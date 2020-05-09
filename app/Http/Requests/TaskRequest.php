@@ -27,7 +27,7 @@ class TaskRequest extends FormRequest
         return [
             'name' => 'required',
             'project_id' => 'required',
-            'priority' => 'required'
+            'priority' => 'sometimes'
         ];
     }
 

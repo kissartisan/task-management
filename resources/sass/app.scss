@@ -3,3 +3,20 @@
 
 // Bootstrap
 @import url('https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css');
+
+
+.header {
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+.list {
+    &__actions {
+        display: flex;
+
+        &-item {
+            margin: 0 0.1rem;
+        }
+    }
+}

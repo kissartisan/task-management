@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div style="display:flex; justify-content: space-around;align-items:center;">
+    <div class="header mb-2">
         <h1>Tasks</h1>
-        <a class="btn btn-secondary" href="{{ route('tasks.create') }}">Create Task</a>
+        <a class="btn btn-primary" href="{{ route('tasks.create') }}">Create Task</a>
     </div>
 
     <table class="table">
@@ -15,23 +15,30 @@
               <th scope="col">Actions</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="list">
             @foreach($tasks as $task)
                 <tr>
                     <th>{{ $task->getKey() }}</th>
                     <th>
-                       <a href="{{ route('tasks.show', $task->getKey()) }}">
-                            {{ $task->name }}
-                        </a>
+                       {{ $task->name }}
                     </th>
                     <th scope="col">{{ $task->project->name }}</th>
-                    <th>
-                        <a href="{{ route('tasks.edit', $task->getKey()) }}">
+                    <th class="list__actions">
+                        <a href="{{ route('tasks.show', $task) }}"
+                            class="btn btn-secondary list__actions-item">
+                            View
+                        </a>
+                        <a href="{{ route('tasks.edit', $task) }}"
+                            class="btn btn-info list__actions-item">
                             Edit
                         </a>
-                        <a href="{{ route('tasks.destroy', $task->getKey()) }}">
-                            Delete
-                        </a>
+                        <form method="POST" action="{{ route('tasks.destroy', $task) }}"
+                        class="list__actions-item">
+                            @csrf
+                            @method('DELETE')
+
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
                     </th>
                 </tr>
 

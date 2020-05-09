@@ -28,3 +28,4 @@
 </div>
 
 <button type="submit" class="btn btn-primary">{{ $buttonText }}</button>
+<a href="{{ route('tasks.index') }}" class="btn btn-secondary">Back</a>

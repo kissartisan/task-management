@@ -1,4 +1,4 @@
-# !Task Management App
+# Task Management App
 
 > ### This web application that let's you manage your tasks include CRUD operations, associating task to project & drag & drop functionality.
 
@@ -8,7 +8,7 @@
 
 ## Installation
 
-Please check the official laravel installation guide for server requirements before you start. [Click here for Official Documentation](https://laravel.com/docs/5.4/installation#installation)
+Please check the official laravel installation guide for server requirements before you start. [Official Documentation can be found here](https://laravel.com/docs/5.4/installation#installation)
 
 
 Clone the repository
@@ -54,7 +54,7 @@ You can now access the server at http://localhost:8000
     php artisan key:generate
     npm install
 
-**Make sure you set the correct database connection information before running the migrations** [Environment variables](#environment-variables)
+**Make sure you set the correct database connection information before running the migrations.** [Environment variables](#environment-variables)
 
     php artisan migrate
     php artisan serve
@@ -88,14 +88,16 @@ Run the database seeder and you're done
 - `app` - Contains all the Eloquent models
 - `app/Http/Controllers` - Contains all the controllers
 - `app/Http/Requests` - Contains all the form requests
-- `config` - Contains all the application configuration files
 - `database/factories` - Contains the model factory for Project & Task
 - `database/migrations` - Contains all the database migrations
 - `database/seeds` - Contains the database seeder for Task
+- `resources/js` - Contains all the Javascript/Vue files
+- `resources/sass` - Contains basic styling (app.scss file)
+- `resources/views` - Contains all the blade files
 - `routes` - Contains all the routes defined in web.php file
 
 ## Environment variables
 
 - `.env` - Environment variables can be set in this file
 
-***Note*** : You can quickly set the database information and other variables in this file and have the application fully working.
+***Note*** : You can quickly set the database information and other variables in this file.

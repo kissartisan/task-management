@@ -79,7 +79,7 @@ Run the database seeder and you're done
 
 # Code overview
 
-## Dependencies
+## Added Dependencies
 
 - [laravel/ui](https://github.com/laravel/ui) - For Frontend Scaffolding
 

@@ -1,8 +1,19 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+.header {
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+}
 
-// Variables
-@import 'variables';
+.list {
+    &__item {
+        cursor: move;
+    }
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+    &__actions {
+        display: flex;
+
+        &-item {
+            margin: 0 0.1rem;
+        }
+    }
+}

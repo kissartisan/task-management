@@ -17,5 +17,6 @@ Route::get('/', function () {
     return redirect(route('tasks.index'));
 });
 
+Route::put('tasks/priorities', 'UpdateTaskPriorities')->name('tasks.priorities.update');
 Route::resource('tasks', 'TaskController');
 Route::get('/projects/{project}/tasks', 'ProjectTaskController@show')->name('projects.tasks.show');

@@ -2,7 +2,7 @@
     <table class="table">
         <thead>
             <tr>
-              <th scope="col">ID</th>
+              <th scope="col">Priority</th>
               <th scope="col">Name</th>
               <th scope="col">Project</th>
               <th scope="col">Actions</th>
@@ -12,9 +12,10 @@
             :element="'tbody'"
             :options="{animation: 200}"
             class="list"
+            @change="updatePriority"
         >
             <tr class="list__item" v-for="(task, index) in taskList">
-                <th>{{ task.id }}</th>
+                <th>{{ task.priority }}</th>
                 <th>
                     {{ task.name }}
                 </th>
@@ -53,7 +54,7 @@
             draggable,
         },
 
-        props: ['tasks'],
+        props: ['tasks', 'updateTaskPriorities'],
 
         data() {
             return {
@@ -62,8 +63,19 @@
             }
         },
 
-        mounted() {
-            console.log('Component mounted.', this.tasks);
+        methods: {
+            updatePriority() {
+                this.taskList.map((task, index) => {
+                    task.priority = index + 1
+                });
+
+                axios.put(this.updateTaskPriorities, {
+                    tasks: this.taskList
+                }).then(({data}) => {
+                    console.table(data);
+                });
+            }
         }
+
     };
 </script>

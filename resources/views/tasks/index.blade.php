@@ -6,5 +6,8 @@
         <a class="btn btn-primary" href="{{ route('tasks.create') }}">New Task</a>
     </div>
 
-    <draggable-tasks :tasks="{{ $tasks }}"></draggable-tasks>
+    <draggable-tasks
+        :tasks="{{ $tasks }}"
+        update-task-priorities="{{ route('tasks.priorities.update') }}"
+    ></draggable-tasks>
 @endsection

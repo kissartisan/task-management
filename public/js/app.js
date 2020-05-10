@@ -1957,20 +1957,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     draggable: vuedraggable__WEBPACK_IMPORTED_MODULE_0___default.a
   },
-  props: ['tasks'],
+  props: ['tasks', 'updateTaskPriorities'],
   data: function data() {
     return {
       taskList: this.tasks,
       csrf: document.head.querySelector('meta[name="csrf-token"]').content
     };
   },
-  mounted: function mounted() {
-    console.log('Component mounted.', this.tasks);
+  methods: {
+    updatePriority: function updatePriority() {
+      this.taskList.map(function (task, index) {
+        task.priority = index + 1;
+      });
+      axios.put(this.updateTaskPriorities, {
+        tasks: this.taskList
+      }).then(function (_ref) {
+        var data = _ref.data;
+        console.table(data);
+      });
+    }
   }
 });
 
@@ -41346,6 +41357,7 @@ var render = function() {
         {
           staticClass: "list",
           attrs: { element: "tbody", options: { animation: 200 } },
+          on: { change: _vm.updatePriority },
           model: {
             value: _vm.taskList,
             callback: function($$v) {
@@ -41356,7 +41368,7 @@ var render = function() {
         },
         _vm._l(_vm.taskList, function(task, index) {
           return _c("tr", { staticClass: "list__item" }, [
-            _c("th", [_vm._v(_vm._s(task.id))]),
+            _c("th", [_vm._v(_vm._s(task.priority))]),
             _vm._v(" "),
             _c("th", [
               _vm._v(
@@ -41439,7 +41451,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("ID")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Priority")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
         _vm._v(" "),

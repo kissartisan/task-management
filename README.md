@@ -1,6 +1,6 @@
 # Task Management App
 
-> ### This web application that let's you manage your tasks include CRUD operations, associating task to project & drag & drop functionality.
+> ### This web application let's you manage your tasks include CRUD operations, associating task to project & drag & drop functionality.
 
 ----------
 
